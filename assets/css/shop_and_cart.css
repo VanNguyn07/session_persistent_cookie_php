@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 20px;
+    /* padding: 20px; */
+}
+
+table {
+    border: 2px solid black;
+    border-radius: 15px;
+    border-spacing:15px;
+    margin-top: 15px;
+    border-collapse: collapse;
+    text-align: center;
+}
+ td {
+    margin: 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    font-size: 18px;
+    color: #333;
+}
+
+.col-border-none, #col2-row3{
+    border: none;
+    /* padding: 0; */
+    margin-top: 10px;
+}
+
+#col1-row3 + #col2-row3 {
+    margin-left: 10px;
+}
+
+#col2-row3 {
+    margin-top: 15px;
+}
+#col2-row3 a{
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: blanchedalmond;
+    color: black;
+    /* box-shadow: 3px 3px 10px black; */
+}
+
+button {
+    padding: 5px;
+    border-radius: 10px;
+    background-color: blanchedalmond;
+    /* box-shadow: 3px 3px 10px black; */
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:active {
+    transform: scale(0.95);
+    background-color: rebeccapurple;
+}
+
+button:hover, #col2-row3 a:hover{
+    background-color: rgb(128, 194, 36);
+    color: white;
+}
+
+.button-group {
+    display: flex;
+}
+
+.session{
+    display: inline-block;
+}
+.btn {
+    padding: 0;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+}
+
+#quantity{
+    width: 35px;
+    text-align: center;
+    border-radius: 5px;
+}
+.quantityButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
