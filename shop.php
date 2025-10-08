@@ -1,17 +1,18 @@
 <?php
 require_once 'includes/common.php';
 session_start();
+
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $username = isset($_POST['username']) ? trim($_POST['username']) : '';
     if($username === ''){
-        header('loction: index.html');
+        header('location: index.html');
         exit;
     }else {
         // save in session
         $_SESSION['userName'] = $username;
-        // an toàn khi in ra HTML
-        $safeName = htmlspecialchars($username, ENT_QUOTES, 'UTF-8');
     }
+            // an toàn khi in ra HTML
+        $safeName = isset($username) && $username !== '' ? htmlspecialchars($username, ENT_QUOTES, 'UTF-8'): 'Guest';
 }
 ?>
 
@@ -24,7 +25,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <link rel="stylesheet" href="assets/css/shop_and_cart.css">
 </head>
 <body>
-    <h1>My Shoes Store!</h1>
+        <h1>My Shoes Store!</h1>
 
     <div class="session">
         <p>Hello: <b> <?php echo $safeName; ?>! </b>👋 </p>
@@ -96,7 +97,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <td class="col-border-none"></td>
 
             <td id="col2-row3">
-                <a href="./cart.php">Coming to Cart</a>
+                <button type="button" onclick="window.location.href='./cart.php'">
+                    Go to Cart
+                </button>
             </td>
         </tr>
 

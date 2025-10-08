@@ -1,18 +1,13 @@
 <?php
 require_once 'includes/common.php';
 session_start();
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $username = isset($_POST['username']) ? trim($_POST['username']) : '';
-    if($username === ''){
-        header('loction: index.html');
-        exit;
-    }else {
-        // save in session
-        $_SESSION['userName'] = $username;
-        // an toàn khi in ra HTML
-        $safeName = htmlspecialchars($username, ENT_QUOTES, 'UTF-8');
-    }
+
+if(!isset($_SESSION['userName']) || $_SESSION['userName'] == ''){
+    $safeName = 'Guest';
+}else {
+    $safeName = htmlspecialchars($_SESSION['userName'], ENT_QUOTES, "UTF-8");
 }
+
 ?>
 
 <!DOCTYPE html>
