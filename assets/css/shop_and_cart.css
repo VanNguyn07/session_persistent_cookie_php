@@ -22,6 +22,7 @@ table {
     border-collapse: collapse;
     text-align: center;
 }
+
  td {
     margin: 0;
     padding: 10px;
@@ -58,12 +59,10 @@ button {
     padding: 5px;
     border-radius: 10px;
     background-color: blanchedalmond;
-    /* box-shadow: 3px 3px 10px black; */
     cursor: pointer;
     font-size: 16px;
 }
-
-button:active {
+ button:active {
     transform: scale(0.95);
     background-color: rebeccapurple;
 }
@@ -71,7 +70,7 @@ button:active {
 button:hover, #col2-row3 a:hover{
     background-color: rgb(128, 194, 36);
     color: white;
-}
+} */
 
 .button-group {
     display: flex;
@@ -97,4 +96,8 @@ button:hover, #col2-row3 a:hover{
     justify-content: center;
     align-items: center;
     gap: 10px;
+}
+
+.btn-endSession + .btn-goBack {
+    margin-left: 50px;
 }

@@ -1,6 +1,7 @@
 <?php
-require_once 'includes/common.php';
 session_start();
+require_once 'includes/common.php';
+require_once 'includes/product.php';
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $username = isset($_POST['username']) ? trim($_POST['username']) : '';
@@ -11,9 +12,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         // save in session
         $_SESSION['userName'] = $username;
     }
-            // an toàn khi in ra HTML
-        $safeName = isset($username) && $username !== '' ? htmlspecialchars($username, ENT_QUOTES, 'UTF-8'): 'Guest';
 }
+     // an toàn khi in ra HTML
+        $safeName = isset($_SESSION['userName']) && $_SESSION['userName'] !== '' ? htmlspecialchars($_SESSION['userName'], ENT_QUOTES, 'UTF-8'): 'Guest';
 ?>
 
 <!DOCTYPE html>
@@ -25,11 +26,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <link rel="stylesheet" href="assets/css/shop_and_cart.css">
 </head>
 <body>
-        <h1>My Shoes Store!</h1>
 
+    <h1>My Shoes Store!</h1>
+        
     <div class="session">
         <p>Hello: <b> <?php echo $safeName; ?>! </b>👋 </p>
-        <p>Session ID: </p>
+        <p>Session ID: <b> <?php echo session_id(); ?></b></p>
     </div>
 
     <table>
@@ -48,61 +50,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </td>
         </tr>
 
+        <?php foreach($products as $product): ?>
         <tr>
             <td>
-                <label for="">Canvas Shoes</label>
+                <label for=""><?php echo htmlspecialchars($product['name']); ?></label>
             </td>
 
             <td>
-                <label for="">500.000VND </label>
+                <label for=""><?php echo number_format($product['cost']); ?> VND</label>
             </td>
+                <input type="hidden" name="id" value="<?= $product['id'] ?>">
 
             <td id="col1-row3">
-                <button type="submit">Add to Cart</button>
+                <form action="cart.php" method="post">
+                    <input type="hidden" name="id" value="<?php echo $product['id']; ?>">
+                    <button type="submit" name="add_to_cart">Add to Cart</button>
+                </form>
             </td>
         </tr>
-
-        <tr>
-            <td>
-                <label for="">Nike Shoes</label>
-            </td>
-
-            <td>
-                <label for="">1.000.000VND </label>
-            </td>
-
-            <td id="col1-row3">
-                <button type="submit">Add to Cart</button>
-            </td>
-
-        </tr>
-
-        <tr>
-            <td>
-                <label for="">Sport Shoes</label>
-            </td>
-
-            <td>
-                <label for="">300.000VND </label>
-            </td>
-
-            <td id="col1-row3">
-                <button type="submit">Add to Cart</button>
-            </td>
-
-        </tr>
-
-        <tr>
-            <td class="col-border-none"></td>
-            <td class="col-border-none"></td>
-
-            <td id="col2-row3">
-                <button type="button" onclick="window.location.href='./cart.php'">
-                    Go to Cart
-                </button>
-            </td>
-        </tr>
-
+        <?php endforeach; ?>
     </table>
 </body>
 </html>
