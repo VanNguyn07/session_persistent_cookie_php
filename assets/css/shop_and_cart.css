@@ -70,7 +70,7 @@ button {
 button:hover, #col2-row3 a:hover{
     background-color: rgb(128, 194, 36);
     color: white;
-} */
+} 
 
 .button-group {
     display: flex;
@@ -98,6 +98,19 @@ button:hover, #col2-row3 a:hover{
     gap: 10px;
 }
 
-.btn-endSession + .btn-goBack {
-    margin-left: 50px;
+.btn-remove{
+    padding: 5px;
+    border-radius: 10px;
+    background-color: blanchedalmond;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    color: #333;
+    border: 2px solid black;
+    font-weight: 600;
+}
+
+.btn-remove:hover{
+    background-color: rgb(128, 194, 36);
+    color: white;
 }
